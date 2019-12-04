@@ -37,7 +37,8 @@ describe('FormComponent', () => {
     fixture.detectChanges();
 
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('mat-error').textContent).toContain('First name is required');
+    const matError: HTMLElement = compiled.querySelector('mat-error');
+    expect(matError.textContent).toContain('First name is required');
   });
 
   it('Last name：必須チェックのテスト', () => {
@@ -46,7 +47,8 @@ describe('FormComponent', () => {
     fixture.detectChanges();
 
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('mat-error').textContent).toContain('Last name is required');
+    const matError: HTMLElement = compiled.querySelector('mat-error');
+    expect(matError.textContent).toContain('Last name is required');
   });
 
   it('addressFormがVALIDのテスト', () => {
@@ -95,6 +97,7 @@ describe('FormComponent', () => {
     button.click();
     fixture.detectChanges();
 
-    expect(compiled.querySelectorAll('textarea').length).toEqual(2);
+    const nodeList: NodeList = compiled.querySelectorAll('textarea');
+    expect(nodeList.length).toEqual(2);
   });
 });

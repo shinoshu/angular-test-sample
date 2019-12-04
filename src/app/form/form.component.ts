@@ -88,6 +88,7 @@ export class FormComponent {
   constructor(private fb: FormBuilder) {}
 
   onSubmit() {
-    alert('Thanks!');
+    const message = this.addressForm.valid ? 'Thanks!' : 'Sorry…';
+    alert(message);
   }
 }

@@ -55,4 +55,18 @@ describe('FormComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('mat-error').textContent).toContain('Last name is required');
   });
+
+  it('addressFormがVALIDのテスト', () => {
+    spyOn(window, 'alert');
+    component.onSubmit();
+
+    expect(window.alert).toHaveBeenCalledWith('Thanks!');
+  });
+
+  it('addressFormがINVALIDのテスト', () => {
+    spyOn(window, 'alert');
+    component.onSubmit();
+
+    expect(window.alert).toHaveBeenCalledWith('Sorry…');
+  });
 });

@@ -50,6 +50,19 @@ describe('FormComponent', () => {
   });
 
   it('addressFormがVALIDのテスト', () => {
+    const addressForm = component.addressForm;
+    addressForm.setValue({
+      company: '',
+      firstName: 'first',
+      lastName: 'last',
+      address: 'address',
+      address2: 'address2',
+      city: 'city',
+      state: 'Alabama',
+      postalCode: '12345',
+      shipping: 'free'
+    });
+
     spyOn(window, 'alert');
     component.onSubmit();
 
@@ -57,6 +70,19 @@ describe('FormComponent', () => {
   });
 
   it('addressFormがINVALIDのテスト', () => {
+    const addressForm = component.addressForm;
+    addressForm.setValue({
+      company: '',
+      firstName: '',
+      lastName: '',
+      address: '',
+      address2: '',
+      city: '',
+      state: '',
+      postalCode: '',
+      shipping: ''
+    });
+
     spyOn(window, 'alert');
     component.onSubmit();
 

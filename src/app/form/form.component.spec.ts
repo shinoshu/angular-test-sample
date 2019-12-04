@@ -88,4 +88,13 @@ describe('FormComponent', () => {
 
     expect(window.alert).toHaveBeenCalledWith('Sorry…');
   });
+
+  it('Address 2の入力欄が表示されるかテスト', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const button: HTMLElement = compiled.querySelector('button');
+    button.click();
+    fixture.detectChanges();
+
+    expect(compiled.querySelectorAll('textarea').length).toEqual(2);
+  });
 });

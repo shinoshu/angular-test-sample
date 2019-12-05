@@ -1,12 +1,10 @@
-/* tslint:disable:no-string-literal */
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable, ObservableInput, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +20,7 @@ export class ApiClientService {
     return options;
   }
 
-  constructor(private http: HttpClient, private dialog: MatDialog) {}
+  constructor(private http: HttpClient) {}
 
   /**
    * 作成APIを呼び出す
@@ -56,7 +54,7 @@ export class ApiClientService {
    */
   getWithoutId<T>(resourceName: string, params?: any): Observable<T> {
     const options = this.options;
-    options['params'] = params;
+    Object.defineProperty(options, 'params', params);
 
     return this.http
       .get<T>(this.apiPath(resourceName), options)
@@ -71,7 +69,7 @@ export class ApiClientService {
    */
   list<T>(resourceName: string, params?: any): Observable<T[]> {
     const options = this.options;
-    options['params'] = params;
+    Object.defineProperty(options, 'params', params);
 
     return this.http
       .get<T[]>(this.apiPath(resourceName), this.options)

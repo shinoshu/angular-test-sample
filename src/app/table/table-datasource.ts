@@ -41,8 +41,8 @@ const EXAMPLE_DATA: TableItem[] = [
  */
 export class TableDataSource extends DataSource<TableItem> {
   data: TableItem[] = EXAMPLE_DATA;
-  paginator: MatPaginator;
-  sort: MatSort;
+  paginator!: MatPaginator;
+  sort!: MatSort;
 
   constructor() {
     super();
@@ -103,6 +103,6 @@ export class TableDataSource extends DataSource<TableItem> {
 }
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-function compare(a, b, isAsc) {
+function compare(a: string | number, b: string | number, isAsc: boolean) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

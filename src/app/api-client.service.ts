@@ -53,11 +53,11 @@ export class ApiClientService {
    * @returns Observable
    */
   getWithoutId<T>(resourceName: string, params?: any): Observable<T> {
-    const options = this.options;
-    Object.defineProperty(options, 'params', params);
+    // const options = this.options;
+    // Object.defineProperty(options, 'params', params);
 
     return this.http
-      .get<T>(this.apiPath(resourceName), options)
+      .get<T>(this.apiPath(resourceName), this.options)
       .pipe(catchError(err => this.handleError<T>(err)));
   }
 
@@ -68,8 +68,8 @@ export class ApiClientService {
    * @returns Observable
    */
   list<T>(resourceName: string, params?: any): Observable<T[]> {
-    const options = this.options;
-    Object.defineProperty(options, 'params', params);
+    // const options = this.options;
+    // Object.defineProperty(options, 'params', params);
 
     return this.http
       .get<T[]>(this.apiPath(resourceName), this.options)

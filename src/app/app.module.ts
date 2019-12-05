@@ -3,9 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { DemoMaterialModule } from './material-module';
+
+import { ApiClientService } from './api-client.service';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -27,13 +30,16 @@ import { MatSortModule } from '@angular/material/sort';
     BrowserAnimationsModule,
     LayoutModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
     DemoMaterialModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [],
+  providers: [
+    ApiClientService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
